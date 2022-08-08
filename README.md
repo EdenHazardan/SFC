@@ -1,5 +1,5 @@
-# CGFC
-This repository is released for double-blind submission, which can reproduce the main results (our proposed CGFC) of the experiment on VIPER to Cityscapes-Seq.  Experiments on the SYNTHIA-Seq to Cityscapes-Seq can be easily implemented by slightly modifying the dataset and setting.
+# SFC
+This repository is released for double-blind submission, which can reproduce the main results (our proposed SFC) of the experiment on VIPER to Cityscapes-Seq.  Experiments on the SYNTHIA-Seq to Cityscapes-Seq can be easily implemented by slightly modifying the dataset and setting.
 
 ## Install & Requirements
 
@@ -11,7 +11,7 @@ The code has been tested on pytorch=1.8.0 and python3.8. Please refer to ``requi
 pip install -r requirements.txt
 ```
 ## Download Pretrained Weights
-We put the weight of flownet pretrained on Flying Chairs in ``CGFC/model_weights/flownet_flyingchairs_pretrained.pth``. As for the segmentation model initialization, following DA-VSN, we start with a model pretrained on ImageNet: [Download](http://vllab.ucmerced.edu/ytsai/CVPR18/DeepLab_resnet_pretrained_init-f81d91e8.pth)
+We put the weight of flownet pretrained on Flying Chairs in ``SFC/model_weights/flownet_flyingchairs_pretrained.pth``. As for the segmentation model initialization, following DA-VSN, we start with a model pretrained on ImageNet: [Download](http://vllab.ucmerced.edu/ytsai/CVPR18/DeepLab_resnet_pretrained_init-f81d91e8.pth)
 
 
 ## Data preparation
@@ -19,7 +19,7 @@ You need to download the [VIPER](https://playing-for-benchmarks.org/download/) d
 
 Your directory tree should be look like this:
 ```
-./CGFC/data
+./SFC/data
 ├── Cityscapes
 |  ├── gtFine
 |  |  |—— train
@@ -37,45 +37,45 @@ Your directory tree should be look like this:
 ```
 
 ## Training 
-CGFC contains three training phases. The first is to train a FlowNet in source domain. Here we choose to train Accel source-only, which can indirectly train a flownet. The second is to train SFN in source domain. Finally, we use the well-trained SFN and FlowNet to train CGFC from scratch.
+SFC contains three training phases. The first is to train a FlowNet in source domain. Here we choose to train Accel source-only, which can indirectly train a flownet. The second is to train SFM in source domain. Finally, we use the well-trained SFM and FlowNet to train SFC from scratch.
 
 ### FlowNet pretrained
 ```
 # Firstly, we need to train segmentation models source-only in Accel stage one.
 
 # train update baseline model
-cd ./CGFC/exp/FlowNet_pretrain/stage_one/script/
+cd ./SFC/exp/FlowNet_pretrain/stage_one/script/
 bash update.sh
 # train reference baseline model
 bash reference.sh
-# the checkpoints in Accel stage one would be saved in ./CGFC/save_results/FlowNet_pretrain/stage_one/  
+# the checkpoints in Accel stage one would be saved in ./SFC/save_results/FlowNet_pretrain/stage_one/  
 
 # Then, we use the stage one model to train Accel source-only in stage two
-cd ./CGFC/exp/FlowNet_pretrain/stage_two/script/
+cd ./SFC/exp/FlowNet_pretrain/stage_two/script/
 bash train.sh
-# the well-trained FlowNet checkpoint would be saved in ./CGFC/save_results/FlowNet_pretrain/stage_two/  
+# the well-trained FlowNet checkpoint would be saved in ./SFC/save_results/FlowNet_pretrain/stage_two/  
 ```
 
-### SFN pretrained
+### SFM pretrained
 ```
-cd ./CGFC/exp/SFN/script/
+cd ./SFC/exp/SFM/script/
 bash train.sh
-# the well-trained SFN checkpoint would be saved in ./CGFC/save_results/SFN/  
+# the well-trained SFM checkpoint would be saved in ./SFC/save_results/SFM/  
 ```
 
-### CGFC training
+### SFC training
 ```
-# Firstly, we need to train segmentation models with CGFC in Accel stage one.
+# Firstly, we need to train segmentation models with SFC in Accel stage one.
 
 # train update baseline model
-cd ./CGFC/exp/CGFC/stage_one/script/
+cd ./SFC/exp/SFC/stage_one/script/
 bash update.sh
 # train reference baseline model
 bash reference.sh
-# the checkpoints in Accel stage one would be saved in ./CGFC/save_results/CGFC/stage_one/  
+# the checkpoints in Accel stage one would be saved in ./SFC/save_results/SFC/stage_one/  
 
-# Then, we use the stage one model to train Accel with CGFC in stage two
-cd ./CGFC/exp/CGFC/stage_two/script/
+# Then, we use the stage one model to train Accel with SFC in stage two
+cd ./SFC/exp/SFC/stage_two/script/
 bash train.sh
 ```
 
