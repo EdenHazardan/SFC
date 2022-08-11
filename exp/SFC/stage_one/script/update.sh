@@ -12,7 +12,7 @@ python3 exp/SFC/stage_one/python/train.py \
         --lr 2.5e-4 \
         --distance 2 \
         --scale_factor 100 \
-        --loss_flow 0.01 \
+        --loss_flow 0.005 \
         --source_batch_size 1 \
         --target_batch_size 1 \
         --train_num_workers 2 \
