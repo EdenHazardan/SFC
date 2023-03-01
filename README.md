@@ -1,5 +1,5 @@
 # SFC
-This repository is released for double-blind submission, which can reproduce the main results (our proposed SFC) of the experiment on VIPER to Cityscapes-Seq.  Experiments on the SYNTHIA-Seq to Cityscapes-Seq can be easily implemented by slightly modifying the dataset and setting.
+This repository is released that can reproduce the main results (our proposed SFC) of the experiment on VIPER to Cityscapes-Seq.  Experiments on the SYNTHIA-Seq to Cityscapes-Seq can be easily implemented by slightly modifying the dataset and setting.
 
 ## Install & Requirements
 
