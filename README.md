@@ -1,5 +1,28 @@
-# SFC
+# Exploit Domain-robust Optical Flow in Domain Adaptive Video Semantic Segmentation （AAAI 2023 Oral）
 This repository is released that can reproduce the main results (our proposed SFC) of the experiment on VIPER to Cityscapes-Seq.  Experiments on the SYNTHIA-Seq to Cityscapes-Seq can be easily implemented by slightly modifying the dataset and setting.
+
+## Paper
+![image](https://github.com/EdenHazardan/SFC/blob/master/SFC.PNG)
+Exploit domain-robust optical flow in domain adaptive video semantic segmentation.
+Yuan Gao, Zilei Wang, Jiafan Zhuang, Yixin, Zhang and Junjie Li. 
+University of Science and Technology of China.
+
+Proceedings of the AAAI Conference on Artificial Intelligence(AAAI),  2023(Oral)
+
+If you find this code useful for your research, please cite our paper:
+
+```
+@inproceedings{gao2023exploit,
+  title={Exploit domain-robust optical flow in domain adaptive video semantic segmentation},
+  author={Gao, Yuan and Wang, Zilei and Zhuang, Jiafan and Zhang, Yixin and Li, Junjie},
+  booktitle={AAAI},
+  year={2023}
+}
+
+```
+
+## Abstract
+Domain adaptive semantic segmentation aims to exploit the pixel-level annotated samples on source domain to assist the segmentation of unlabeled samples on target domain. For such a task, the key is to construct reliable supervision signals on target domain. However, existing methods can only pro- vide unreliable supervision signals constructed by segmen- tation model (SegNet) that are generally domain-sensitive. In this work, we try to find a domain-robust clue to con- struct more reliable supervision signals. Particularly, we ex- perimentally observe the domain-robustness of optical flow in video tasks as it mainly represents the motion characteris- tics of scenes. However, optical flow cannot be directly used as supervision signals of semantic segmentation since both of them essentially represent different information. To tackle this issue, we first propose a novel Segmentation-to-Flow Module (SFM) that converts semantic segmentation maps to optical flows, named the segmentation-based flow (SF), and then propose a Segmentation-based Flow Consistency (SFC) method to impose consistency between SF and optical flow, which can implicitly supervise the training of segmentation model. The extensive experiments on two challenging bench- marks demonstrate the effectiveness of our method, and it outperforms previous state-of-the-art methods with consider- able performance improvement.
 
 ## Install & Requirements
 
